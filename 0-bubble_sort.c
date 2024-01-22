@@ -5,37 +5,33 @@
  * using the Bubble sort algorithm
  * @array: integer array being sorted
  * @size: array size
- * Return: Void
+ * Return: void
  */
 
 void bubble_sort(int *array, size_t size)
 {
-	size_t jel, s;
-	int san;
+	int i = 0;
+	int san = 0;
+	int max = 0;
+	int jel = 1;
 
-	if (size < 2)
-	{
+	if (!array || size < 2)
 		return;
-	}
 
+	max = size - 1;
 
-	for (s = 0; s <= size; s++)
+	for (; i < max; ++i)
 	{
-		if (array[s + 1])
+		if (array[i] > array[i + 1])
 		{
-			for (jel = 0; jel <= size; jel++)
-			{
-				if (array[jel + 1])
-				{
-					if (array[jel] > array[jel + 1])
-					{
-						san = array[jel];
-						array[jel] = array[jel + 1];
-						array[jel + 1] = san;
-						print_array(array, size);
-					}
-				}
-			}
+			san = array[i];
+			array[i] = array[i + 1];
+			array[i + 1] = san;
+			jel = 1;
+			print_array(array, size);
 		}
+
+		if (jel == 1 && i == max - 1)
+			i = -1, jel = 0, --max;
 	}
 }
